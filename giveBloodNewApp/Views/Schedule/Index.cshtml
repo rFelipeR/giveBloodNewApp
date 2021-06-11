@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DAL.Scheduling>
+@{
+    List<DAL.Scheduling> schedulings = ViewBag.Schedules;
+}
+
+<style>
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border: 1px solid #222
+    }
+    .list_schedules{
+        position:absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%)
+    }
+</style>
+
+<div class="list_schedules">
+    <h2 class="text-center">Lista de agendamentos</h2>
+    <table style="margin-top: 1rem">
+        <tr>
+            <th>Doador</th>
+            <th>Data e hora</th>
+            <th>Local</th>
+        </tr>
+        @foreach (DAL.Scheduling scheduling in Model)
+        {
+    <tr>
+        @*<td>
+            <span>@scheduling.id_schedule |</span>
+        </td>*@
+        <td>
+            <span>@scheduling.donor.name </span>
+        </td>
+        <td>
+            <span class="year">@(scheduling.date.ToString("MM/dd/yyyy H:mm")) </span>
+        </td>
+        <td>
+            <span>@scheduling.bloodCenter.name_bc </span>
+        </td>
+        @*<td>
+            <a href="@Url.Action("Detail", "Schedule", new { id = scheduling.id_schedule})"> Ver detalhes</a>
+        </td>*@
+    </tr>
+        }
+
+
+
+    </table>
+
+</div>
