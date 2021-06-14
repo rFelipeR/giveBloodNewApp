@@ -21,9 +21,9 @@ namespace giveBloodNewApp.Controllers
             SchedulesContext schedulesContext = new SchedulesContext();   //iniciar context 1º
 
             var scheduleList = schedulesContext.Schedules.OrderByDescending(x => x.date).Where(x => true);        
-
-
+            var bloodCenterList = schedulesContext.BloodCenters.OrderByDescending(x => x.id_bc).Where(x => true);        
             ViewBag.Schedules = schedulesContext.Schedules.OrderBy(x => x.id_schedule).ToList();
+            ViewBag.BloodCenters = schedulesContext.BloodCenters.OrderBy(x => x.id_bc).ToList();
             return View(scheduleList.ToList());
         }
 
@@ -35,6 +35,17 @@ namespace giveBloodNewApp.Controllers
             //moviesContext.Movies.Where(x => x.Id == id).FirstOrDefault();
 
             return View(schedule);
+        }
+
+        public IActionResult Contacts()
+        {
+
+            SchedulesContext schedulesContext = new SchedulesContext();
+            //ViewBag.BloodCenters = schedulesContext.BloodCenters.OrderBy(x => x.id_bc).ToList();
+            var bloodCenterList = schedulesContext.BloodCenters.OrderByDescending(x => x.id_bc).Where(x => true);
+
+
+            return View(bloodCenterList.ToList());
         }
 
         public IActionResult New()

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<DAL.Scheduling>
 @{
     List<DAL.Scheduling> schedulings = ViewBag.Schedules;
+    List<DAL.BloodCenter> bloodCenters = ViewBag.BloodCenters;
 }
 
 <style>
@@ -9,45 +10,138 @@
         text-align: left;
         border: 1px solid #222
     }
-    .list_schedules{
-        position:absolute;
+
+    .slogan{
+        font-size: 2.65rem;
+    }
+
+    .initialGrid p {
+        margin: 4px 0;
+        font-family: 'Times New Roman', Times, serif
+    }
+
+    .icongreen {
+        margin-right: 4px;
+        color: #4cff00
+    }
+
+    .specialAccordion .card .card-header {
+        padding: .6rem 1.5rem;
+        text-align: left
+    }
+
+    .img_bg{
+          margin: 0;
+    background-image: url(https://picsum.photos/id/3/1920/1080);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 400px;
+    }
+/*
+    .list_schedules {
+        position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%)
-    }
+    }*/
 </style>
 
-<div class="list_schedules">
-    <h2 class="text-center">Lista de agendamentos</h2>
-    <table style="margin-top: 1rem">
-        <tr>
-            <th>Doador</th>
-            <th>Data e hora</th>
-            <th>Local</th>
-        </tr>
-        @foreach (DAL.Scheduling scheduling in Model)
-        {
-    <tr>
-        @*<td>
-            <span>@scheduling.id_schedule |</span>
-        </td>*@
-        <td>
-            <span>@scheduling.donor.name </span>
-        </td>
-        <td>
-            <span class="year">@(scheduling.date.ToString("MM/dd/yyyy H:mm")) </span>
-        </td>
-        <td>
-            <span>@scheduling.bloodCenter.name_bc </span>
-        </td>
-        @*<td>
-            <a href="@Url.Action("Detail", "Schedule", new { id = scheduling.id_schedule})"> Ver detalhes</a>
-        </td>*@
-    </tr>
-        }
+<div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6" style="display: flex; align-items: center">
+            <div style="flex: 1;">
+                <p class="slogan">Salve vidas de modo prático e seguro, faça seu agendamento para doação de sangue</p>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6" style="position:relative">
+            <img src="/img/2707780.jpg" style="width:95%" alt="Give Blood img" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex align-items-center col-sm-6 col-md-4">
+            <h5>Agende com o hemocentro mais próximo de você, a qualquer momento</h5>
+        </div>
+        <div class="col-sm-6 col-md-4 initialGrid">
+            <span><b>Rápido formulário</b></span>
+            <p>- Nome</p>
+            <p>- Email</p>
+            <p>- Hemocentro</p>
+            <p>- Terça: 9am-10am</p>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <p><b>Benefícios</b></p>
+            <p><i class="fas fa-check-circle icongreen"></i> Praticidade</p>
+            <p> <i class="fas fa-check-circle icongreen"></i> Evite filas</p>
+            <p><i class="fas fa-check-circle icongreen"></i> Suporte rápido</p>
 
+        </div>
+    </div>
+    <div style="margin: 50px 0;">
+        <div class="text-center"><h4>FAQ - Dúvidas frequentes</h4></div>
+        <div class="row justify-content-md-center">
+            <div class="col col-sm-10 col-md-8">
+                <div class="accordion specialAccordion" id="accordionExample" style="scroll-behavior:smooth">
+                    <div class="card">
+                        <div class="card-header btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="headingOne">
+                            <p class="mb-0"> Requisitos para doação de sangue </p>
+                        </div>
 
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
 
-    </table>
+                        <div class="card-header  btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" id="headingTwo">
+                            <div>
+                                <p class="mb-0">O que é feito com o sangue doado? </p>
+                            </div>
+                        </div>
+
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="headingThree">
+                            <p class="mb-0"> Tempo médio de duração da doação</p>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" id="headingFour">
+                            <p class="mb-0">Impedimentos temporários para doar sangue  </p>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" id="headingFive">
+                            <p class="mb-0">Impedimentos definitivos para doar sangue</p>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: .5rem;text-align:center"><a class="btn btn-info" href="#">Para mais detalhes, clique aqui.</a></div>
+
+    </div>
 
 </div>
+  

@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - giveBloodNewApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />*@
+    <script src="https://kit.fontawesome.com/0aca0b7c28.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/site.css" />
     <style>
+        html{
+            scroll-behavior: smooth
+        }
         .giveButtonLi {
             position: absolute;
             right: 0;
@@ -15,10 +20,11 @@
             padding: 2px 5px;
             border-radius: 10px;
         }
+
             .giveButtonLi:hover {
                 background: #FF1744
             }
-        
+
 
 
         .giveButton {
@@ -30,47 +36,92 @@
                 color: #fff !important;
                 font-weight: 600;
             }
+
+        .example {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;  
+        }
+
+        .btnSchedule {
+            z-index: 9999;
+            position: fixed;
+            left: 71%;
+            background: white;
+        }
+
+        
     </style>
 </head>
 
-<body>
+<body style="margin-bottom: 0">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Schedule" asp-action="Index">Projeto Doe Sangue</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Schedule" asp-action="Index"><img src="/img/icon2.png" width="125" alt="Projeto Doe Sangue" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 position-relative">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Privacy">Cadastro</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Schedule" asp-action="Contacts">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Privacy">Informações sobre o processo</a>
+                            <a class="nav-link text-dark" href="#accordionExample" style="transition: .4s">Dúvidas frequentes</a>
                         </li>
+                        @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Schedule" asp-action="Privacy">Dúvidas frequentes</a>
+        </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Index">Sobre nós</a>
                         </li>
-                        <li class="nav-item giveButtonLi">
-                            <a class="nav-link text-dark giveButton" asp-area="" asp-controller="Schedule" asp-action="New">Realizar Agendamento</a>
+                        <li class="nav-item" style="position: absolute; right: 0;">
+                            <a class="btn btn-outline-danger btnSchedule" asp-area="" asp-controller="" asp-action="Index">Realizar agendamento</a>
                         </li>
+                        @*<li class="nav-item giveButtonLi">
+            <a class="nav-link text-dark giveButton" asp-area="" asp-controller="Schedule" asp-action="New">Realizar Agendamento</a>
+        </li>*@
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3" style="padding-bottom: 0 !important">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - giveBloodNewApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+   
+    <footer>
+    
+        <div style="background-image: url(https://image.freepik.com/fotos-gratis/cirurgioes-interagindo-entre-si_107420-65924.jpg);
+        margin-top: 50px;
+        position: relative">
+            <div style=" margin-left: auto; margin-right: auto; max-width: 72.5rem;">
+                <div class="text-center" style="padding: 50px 0; color: #fff">
+                    <h4>Doe Salve App</h4>
+                    <p> Avenida Santa Rosa, 2405 - Centro, Três de Maio - RS</p>
+                    <p>+(55)99999-9999  | doesalve@email.com</p>
+                    <p style="margin-bottom: 0">&copy; 2021 GiveBloodNewApp. Todos os direitos reservados @*<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@</p>
+                </div>
+            </div>
         </div>
+        <div style="background-color: #EF233C; margin-top:50px; position:relative">
+            <div style=" margin-left: auto; margin-right: auto; max-width: 72.5rem;">
+                <div class="text-center" style="padding: 50px 0; color: #fff">
+                    <h4>Doe Salve App</h4>
+                    <p> Avenida Santa Rosa, 2405 - Centro, Três de Maio - RS</p>
+                    <p>+(55)99999-9999  | doesalve@email.com</p>
+                    <p style="margin-bottom: 0">&copy; 2021 GiveBloodNewApp. Todos os direitos reservados @*<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@</p>
+                </div>
+            </div>
+        </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
