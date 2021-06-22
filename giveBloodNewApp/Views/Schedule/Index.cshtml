@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<DAL.Scheduling>
+
 @{
     List<DAL.Scheduling> schedulings = ViewBag.Schedules;
     List<DAL.BloodCenter> bloodCenters = ViewBag.BloodCenters;
 }
-
 <style>
     th, td {
         padding: 15px;
@@ -11,7 +11,7 @@
         border: 1px solid #222
     }
 
-    .slogan{
+    .slogan {
         font-size: 2.65rem;
     }
 
@@ -30,22 +30,26 @@
         text-align: left
     }
 
-    .img_bg{
-          margin: 0;
-    background-image: url(https://picsum.photos/id/3/1920/1080);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    min-height: 400px;
+    .img_bg {
+        margin: 0;
+        background-image: url(https://picsum.photos/id/3/1920/1080);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        min-height: 400px;
     }
-/*
+    /*
     .list_schedules {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%)
     }*/
-</style>
 
+
+</style>
+<header>
+    
+</header>
 <div>
     <div class="row">
         <div class="col-sm-12 col-md-6" style="display: flex; align-items: center">
@@ -140,8 +144,18 @@
             </div>
         </div>
         <div style="margin-top: .5rem;text-align:center"><a class="btn btn-info" href="#">Para mais detalhes, clique aqui.</a></div>
-
     </div>
-
 </div>
-  
+@*<div class="img_bottom" style="background-image: url(https://startbootstrap.github.io/startbootstrap-clean-blog-jekyll/img/bg-index.jpg)">
+    <div class="overlay_img"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>Clean Blog</h1>
+                    <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@

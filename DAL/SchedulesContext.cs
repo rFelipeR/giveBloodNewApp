@@ -12,13 +12,14 @@ namespace DAL
         {
             var optionsBuilder = new DbContextOptionsBuilder<SchedulesContext>();
             optionsBuilder.UseLazyLoadingProxies(); //carregar info automaticamente e usar conexão MySQL;
-            optionsBuilder.UseMySQL("server=remotemysql.com;database=kkk;user=yuyuyu;password=yayaya;port=3306");
+            optionsBuilder.UseMySQL("server=remotemysql.com;database=31V2Jahjlh;user=31V2Jahjlh;password=Qby9r8QvZU;port=3306");
             return optionsBuilder.Options;
         }
         public DbSet<Scheduling> Schedules { get; set; } //p/ cada table no DB. OBS: DAL; cada camada é uma função, 
         public DbSet<BloodCenter> BloodCenters { get; set; }  
         public DbSet<City> Cities { get; set; }
         public DbSet<Donor> Donors { get; set; }
+        public DbSet<Employee> Customers { get; set; }
 
     }
 }

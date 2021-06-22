@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - giveBloodNewApp</title>
+    <title>
+        @ViewData - giveBloodNewApp
+    </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @*<link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />*@
     <script src="https://kit.fontawesome.com/0aca0b7c28.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/site.css" />
+
     <style>
-        html{
+        html {
             scroll-behavior: smooth
         }
+
         .giveButtonLi {
             position: absolute;
             right: 0;
@@ -43,7 +48,7 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            background: white;  
+            background: white;
         }
 
         .btnSchedule {
@@ -53,7 +58,28 @@
             background: white;
         }
 
-        
+        .img_bottom {
+            /*margin-bottom: 50px;*/
+            background: no-repeat center center;
+            background-color: #6c757d;
+            background-attachment: scroll;
+            position: relative;
+            background-size: cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+
+        .overlay_img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #212529;
+            opacity: 0.5;
+        }
     </style>
 </head>
 
@@ -75,8 +101,8 @@
                             <a class="nav-link text-dark" href="#accordionExample" style="transition: .4s">Dúvidas frequentes</a>
                         </li>
                         @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Schedule" asp-action="Privacy">Dúvidas frequentes</a>
-        </li>*@
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Schedule" asp-action="Privacy">Dúvidas frequentes</a>
+                            </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Index">Sobre nós</a>
                         </li>
@@ -84,8 +110,8 @@
                             <a class="btn btn-outline-danger btnSchedule" asp-area="" asp-controller="" asp-action="Index">Realizar agendamento</a>
                         </li>
                         @*<li class="nav-item giveButtonLi">
-            <a class="nav-link text-dark giveButton" asp-area="" asp-controller="Schedule" asp-action="New">Realizar Agendamento</a>
-        </li>*@
+                                <a class="nav-link text-dark giveButton" asp-area="" asp-controller="Schedule" asp-action="New">Realizar Agendamento</a>
+                            </li>*@
                     </ul>
                 </div>
             </div>
@@ -96,24 +122,13 @@
             @RenderBody()
         </main>
     </div>
-   
+
     <footer>
-    
-        <div style="background-image: url(https://image.freepik.com/fotos-gratis/cirurgioes-interagindo-entre-si_107420-65924.jpg);
-        margin-top: 50px;
-        position: relative">
+        <div id="urls"></div>
+        <div style="background-color: #EF233C; position:relative">
             <div style=" margin-left: auto; margin-right: auto; max-width: 72.5rem;">
                 <div class="text-center" style="padding: 50px 0; color: #fff">
-                    <h4>Doe Salve App</h4>
-                    <p> Avenida Santa Rosa, 2405 - Centro, Três de Maio - RS</p>
-                    <p>+(55)99999-9999  | doesalve@email.com</p>
-                    <p style="margin-bottom: 0">&copy; 2021 GiveBloodNewApp. Todos os direitos reservados @*<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@</p>
-                </div>
-            </div>
-        </div>
-        <div style="background-color: #EF233C; margin-top:50px; position:relative">
-            <div style=" margin-left: auto; margin-right: auto; max-width: 72.5rem;">
-                <div class="text-center" style="padding: 50px 0; color: #fff">
+                    <a class=" btn btn-outline-success" asp-area="" asp-controller="Login" asp-action="Login">LOGIN</a>
                     <h4>Doe Salve App</h4>
                     <p> Avenida Santa Rosa, 2405 - Centro, Três de Maio - RS</p>
                     <p>+(55)99999-9999  | doesalve@email.com</p>
@@ -127,5 +142,31 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+    
+    <script>
+        $(document).ready(function () {
+            var abc = window.location.href.toString();
+            console.log(abc)
+            if (abc === "http://localhost:46686/") {
+                        $()
+                $("#urls").html(`<div class="img_bottom" id="img_url">
+            <div class="overlay_img"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto text-center">
+                        <div class="page-heading">
+                            <h1>Clean Blog</h1>
+                            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div >`);
+                $("#img_url").css("background-image", "url(https://startbootstrap.github.io/startbootstrap-clean-blog-jekyll/img/bg-index.jpg)")
+                    }
+                    
+                });
+    </script>
 </body>
 </html>
+
