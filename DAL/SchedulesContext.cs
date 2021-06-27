@@ -19,7 +19,7 @@ namespace DAL
         public DbSet<BloodCenter> BloodCenters { get; set; }  
         public DbSet<City> Cities { get; set; }
         public DbSet<Donor> Donors { get; set; }
-        public DbSet<Employee> Customers { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
     }
 }

@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        @ViewData - giveBloodNewApp
+        @*@ViewData - giveBloodNewApp*@
+        Doe Salve App
     </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -111,7 +112,7 @@
                         <li class="nav-item" style="position: absolute; right: 0;">
                             <a class="btn btn-outline-danger btnSchedule" asp-area="" asp-controller="Schedule" asp-action="New">Realizar agendamento</a>
                         </li>
-                   
+
                         @*<li class="nav-item giveButtonLi">
                                 <a class="nav-link text-dark giveButton" asp-area="" asp-controller="Schedule" asp-action="New">Realizar Agendamento</a>
                             </li>*@
@@ -156,18 +157,19 @@
             if (abc === "http://localhost:46686/" || abc == "http://localhost:46686/#") {
                 $()
                 $("#urls").html(`<div class="img_bottom" id="img_url">
-                <div class="overlay_img"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-10 mx-auto text-center">
-                            <div class="page-heading">
-                                <h1>Uma doação pode salvar até 4 vidas</h1>
-                                <h3 class="subheading">Doe sangue, auxilie quem tanto precisa </h3>
+                    <div class="overlay_img"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-10 mx-auto text-center">
+                                <div class="page-heading">
+                                    <h2>Doar sangue é dedicar a esperança para até três vidas.
+Espalhe amor doando sangue a quem tanto precisa!
+</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div >`);
+                </div >`);
                 $("#img_url").css("background-image", "url(http://localhost:46686/img/bghands.jpg)")
             }
 

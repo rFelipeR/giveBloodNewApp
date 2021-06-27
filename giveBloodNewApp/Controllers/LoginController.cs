@@ -34,7 +34,7 @@ namespace Ecommerce.Controllers
         public IActionResult Index(Employee employee)
         {
             DAL.SchedulesContext appContext = new DAL.SchedulesContext();
-            Employee customerDatabase = appContext.Customers
+            Employee customerDatabase = appContext.Employees
                 .Where(x => x.email == employee.email).SingleOrDefault();
             if (customerDatabase == null)
             {
@@ -66,7 +66,7 @@ namespace Ecommerce.Controllers
             DAL.SchedulesContext appContext = new DAL.SchedulesContext();
             employee.Salt = Guid.NewGuid().ToString();
             employee.Hash = Util.Cryptography.CreateMD5(employee.Hash + employee.Salt);
-            appContext.Customers.Add(employee);
+            appContext.Employees.Add(employee);
             appContext.SaveChanges();
             return RedirectToAction("Index", "Schedule");
         }
