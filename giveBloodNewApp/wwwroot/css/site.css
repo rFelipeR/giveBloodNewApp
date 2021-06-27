@@ -156,3 +156,21 @@ body {
     left: 50%;
     top: calc(50% - 3px);
 }
+
+.space_content{
+    padding: 50px 0;
+}
+
+.button_login {
+    display: inline-block;
+    position: absolute;
+    right: 29%;
+    transform: translateX(50%);
+}
+
+.text_about {
+    line-height: 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 2rem;
+}

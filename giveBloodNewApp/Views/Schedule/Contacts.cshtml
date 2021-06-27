@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<DAL.BloodCenter>
     <div class="container">
-        <div class="row">
+        <div class="row space_content">
             <div class="col">
                 <h2>Hemocentros</h2>
                 <div style="margin-top: 1.5rem; max-height:500px; overflow:auto">
@@ -44,6 +44,8 @@
                         </div>
                         <button type="submit" class="btn btn-outline-secondary">Enviar</button>
                     </form>
+                    <p style="position:absolute; right:0"> É funcionário do hemocentro?<a class=" btn btn-link" asp-area="" asp-controller="Login" asp-action="Index">Clique aqui</a></p>
+
                 </div>
             </div>
         </div>

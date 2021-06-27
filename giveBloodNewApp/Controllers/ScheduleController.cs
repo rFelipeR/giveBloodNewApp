@@ -37,6 +37,14 @@ namespace giveBloodNewApp.Controllers
             return View(schedule);
         }
 
+        public IActionResult AboutUs()
+        {
+
+            return View();
+        }
+
+
+
         public IActionResult Contacts()
         {
 

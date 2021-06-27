@@ -11,7 +11,7 @@
     @*<link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />*@
     <script src="https://kit.fontawesome.com/0aca0b7c28.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/site.css" />
-    
+
     <style>
         html {
             scroll-behavior: smooth
@@ -29,8 +29,6 @@
             .giveButtonLi:hover {
                 background: #FF1744
             }
-
-
 
         .giveButton {
             color: #fff !important;
@@ -80,6 +78,10 @@
             background-color: #212529;
             opacity: 0.5;
         }
+
+        .bg_head:hover {
+            background-color: #eeeeee61;
+        }
     </style>
 </head>
 
@@ -95,20 +97,21 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1 position-relative">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Schedule" asp-action="Contacts">Contato</a>
+                            <a class="nav-link text-dark bg_head" asp-area="" asp-controller="Schedule" asp-action="Contacts">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#accordionExample" style="transition: .4s">Dúvidas frequentes</a>
+                            <a class="nav-link text-dark bg_head" href="#accordionExample" style="transition: .4s">Dúvidas frequentes</a>
                         </li>
                         @*<li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Schedule" asp-action="Privacy">Dúvidas frequentes</a>
                             </li>*@
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Index">Sobre nós</a>
+                            <a class="nav-link text-dark bg_head" asp-area="" asp-controller="Schedule" asp-action="AboutUs">Sobre nós</a>
                         </li>
                         <li class="nav-item" style="position: absolute; right: 0;">
-                            <a class="btn btn-outline-danger btnSchedule" asp-area="" asp-controller="" asp-action="Index">Realizar agendamento</a>
+                            <a class="btn btn-outline-danger btnSchedule" asp-area="" asp-controller="Schedule" asp-action="New">Realizar agendamento</a>
                         </li>
+                   
                         @*<li class="nav-item giveButtonLi">
                                 <a class="nav-link text-dark giveButton" asp-area="" asp-controller="Schedule" asp-action="New">Realizar Agendamento</a>
                             </li>*@
@@ -128,7 +131,6 @@
         <div style="background-color: #EF233C; position:relative">
             <div style=" margin-left: auto; margin-right: auto; max-width: 72.5rem;">
                 <div class="text-center" style="padding: 50px 0; color: #fff">
-                    <a class=" btn btn-outline-success" asp-area="" asp-controller="Login" asp-action="Login">LOGIN</a>
                     <h4>Doe Salve App</h4>
                     <p> Avenida Santa Rosa, 2405 - Centro, Três de Maio - RS</p>
                     <p>+(55)99999-9999  | doesalve@email.com</p>
@@ -142,30 +144,34 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
-    
+
     <script>
+        $('#myCollapsible').on('hidden.bs.collapse', function () {
+            console.log('ok')
+        })
+
         $(document).ready(function () {
             var abc = window.location.href.toString();
             console.log(abc)
-            if (abc === "http://localhost:46686/") {
-                        $()
+            if (abc === "http://localhost:46686/" || abc == "http://localhost:46686/#") {
+                $()
                 $("#urls").html(`<div class="img_bottom" id="img_url">
-            <div class="overlay_img"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-10 mx-auto text-center">
-                        <div class="page-heading">
-                            <h1>Uma doação pode salvar até 4 vidas</h1>
-                            <h3 class="subheading">Doe sangue, auxilie quem tanto precisa </h3>
+                <div class="overlay_img"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10 mx-auto text-center">
+                            <div class="page-heading">
+                                <h1>Uma doação pode salvar até 4 vidas</h1>
+                                <h3 class="subheading">Doe sangue, auxilie quem tanto precisa </h3>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div >`);
+            </div >`);
                 $("#img_url").css("background-image", "url(http://localhost:46686/img/bghands.jpg)")
-                    }
-                    
-                });
+            }
+
+        });
     </script>
 </body>
 </html>
