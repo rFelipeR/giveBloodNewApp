@@ -1,11 +1,11 @@
 ﻿@model DAL.Scheduling
 @{
     List<DAL.BloodCenter> bloodCenters = ViewBag.BloodCenters;
-    List<DAL.Donor> donors = ViewBag.Donors;
+    //List<DAL.Donor> donors = ViewBag.Donors;
 }
 
 <div class="space_content position-relative">
-    <h1 class="text-center">Novo Agendamento</h1>
+    <h2 class="text-center">Novo Agendamento</h2>
     <br />
     <form method="post" enctype="multipart/form-data">
 
@@ -17,7 +17,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="bloodcenter">Hemocentro</label>
-                <select class="form-control" name="id_blood_center">
+                <select class="form-control" name="id_bc">
                     <option value="-" selected disabled for> Selecione</option>
 
                     @foreach (DAL.BloodCenter bloodCenter in bloodCenters)
@@ -27,8 +27,8 @@
                 </select>
             </div>
             <div class="form-group col-md-3">
-                <label for="Date">Data e hora da doação</label>
-                <input type="datetime-local" class="form-control datepicker" date name="date">
+                <label for="date">Data e hora da doação</label>
+                <input type="datetime-local" class="form-control" date name="date">
             </div>
             <div class="form-group col-md-3">
             </div>
@@ -63,12 +63,11 @@
 
     </form>
 
-    <script>
+    @*<script>
         $('.datepicker').datepicker({
-
             startDate: new Date()
 
         });
-    </script>
+    </script>*@
 
 </div>

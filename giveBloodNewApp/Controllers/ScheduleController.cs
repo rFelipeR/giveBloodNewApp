@@ -20,9 +20,9 @@ namespace giveBloodNewApp.Controllers
         {
             SchedulesContext schedulesContext = new SchedulesContext();   //iniciar context 1º
 
-            var scheduleList = schedulesContext.Schedules.OrderByDescending(x => x.date).Where(x => true);        
+            var scheduleList = schedulesContext.Schedulings.OrderByDescending(x => x.date).Where(x => true);        
             var bloodCenterList = schedulesContext.BloodCenters.OrderByDescending(x => x.id_bc).Where(x => true);        
-            ViewBag.Schedules = schedulesContext.Schedules.OrderBy(x => x.id_schedule).ToList();
+            ViewBag.Schedules = schedulesContext.Schedulings.OrderBy(x => x.id).ToList();
             ViewBag.BloodCenters = schedulesContext.BloodCenters.OrderBy(x => x.id_bc).ToList();
             return View(scheduleList.ToList());
         }
@@ -31,7 +31,7 @@ namespace giveBloodNewApp.Controllers
         {
 
             SchedulesContext SchedulesContext = new SchedulesContext();
-            Scheduling schedule = SchedulesContext.Schedules.Find(id);
+            Scheduling schedule = SchedulesContext.Schedulings.Find(id);
             //moviesContext.Movies.Where(x => x.Id == id).FirstOrDefault();
 
             return View(schedule);
@@ -68,7 +68,7 @@ namespace giveBloodNewApp.Controllers
         public IActionResult New(Scheduling scheduling)
         {
             SchedulesContext schedulesContext = new SchedulesContext();
-            schedulesContext.Schedules.Add(scheduling);
+            schedulesContext.Schedulings.Add(scheduling);
             schedulesContext.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    [Table("tb_schedulings")]
-    public class Scheduling
+    [Table("tb_schedules")]
+    public class Schedule
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
-
-        [ForeignKey("bloodCenter")]
-        public int id_bc { get; set; }
-        public virtual BloodCenter bloodCenter { get; set; }
+        public int id_schedule { get; set; }
         public DateTime date { get; set; }
 
-        public string name { get; set; }
-        public string phone { get; set; }
-        public string email { get; set; }
+        [ForeignKey("donor")]
+        public int id_donor { get; set; }
+        public virtual Donor donor { get; set; }
+
+        [ForeignKey("bloodCenter")]
+        public int id_blood_center { get; set; }
+        public virtual BloodCenter bloodCenter { get; set; }
     }
 }

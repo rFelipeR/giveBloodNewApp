@@ -168,6 +168,7 @@
     <Compile Include="BloodCenter.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Scheduling.cs" />
+    <Compile Include="Schedule.cs" />
     <Compile Include="Donor.cs" />
     <Compile Include="City.cs" />
     <Compile Include="SchedulesContext.cs" />

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<DAL.Scheduling>
 @{
-    List<DAL.Scheduling> schedulings = ViewBag.Schedules;
+    List<DAL.Scheduling> schedulings = ViewBag.Schedulings;
     List<DAL.BloodCenter> bloodCenters = ViewBag.BloodCenters;
 }
 
@@ -34,27 +34,37 @@
                 <th>Doador</th>
                 <th>Data e hora</th>
                 <th>Local</th>
+                <th></th>
             </tr>
             @foreach (DAL.Scheduling scheduling in Model)
             {
-                <tr>
-                    @*<td>
-                            <span>@scheduling.id_schedule |</span>
-                        </td>*@
-                    <td>
-                        <span>@scheduling.donor.name </span>
-                    </td>
-                    <td>
-                        <span class="year">@(scheduling.date.ToString("MM/dd/yyyy H:mm")) </span>
-                    </td>
-                    <td>
-                        <span>@scheduling.bloodCenter.name_bc </span>
-                    </td>
-                    @*<td>
-                            <a href="@Url.Action("Detail", "Schedule", new { id = scheduling.id_schedule})"> Ver detalhes</a>
-                        </td>*@
-                </tr>
+        <tr>
+            @*<td>
+            <span>@scheduling.id_schedule |</span>
+        </td>*@
+            <td>
+                <span>@scheduling.name</span>
+            </td>
+            <td>
+                <span class="year">@(scheduling.date.ToString("MM/dd/yyyy H:mm")) </span>
+            </td>
+            <td>
+                <span>@scheduling.bloodCenter.name_bc </span>
+            </td>
+            <td>
+                <span><button type="button" id="confirm">Confirmar</button></span>
+            </td>
+            
+            @*<td>
+            <a href="@Url.Action("Detail", "Schedule", new { id = scheduling.id_schedule})"> Ver detalhes</a>
+        </td>*@
+        </tr>
             }
         </table>
     </div>
+    
 </div>
+
+<script>
+
+</script>
