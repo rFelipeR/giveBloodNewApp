@@ -1,3 +1,4 @@
+using giveBloodNewApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,11 +27,16 @@ namespace giveBloodNewApp
             services.AddMvc().AddRazorRuntimeCompilation();
             services.AddMvcCore();
             services.AddSession();
-            services.AddSession(options => {
+            services.AddSession(options =>
+            {
                 options.IdleTimeout = TimeSpan.FromMinutes(60);
             });
             services.AddHttpContextAccessor();
+
+            //services.Configure<MyConfiguration>(Configuration.GetSection("myConfiguration"));
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

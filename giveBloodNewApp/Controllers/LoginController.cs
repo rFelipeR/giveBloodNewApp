@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using System.Net.Mail;
+using System.Net;
 
 namespace Ecommerce.Controllers
 {
@@ -23,6 +25,44 @@ namespace Ecommerce.Controllers
         {
             return View(new Employee());
         }
+
+
+        public IActionResult Confirmation(int id)
+        {
+            SchedulesContext SchedulesContext = new SchedulesContext();
+            Scheduling schedule = SchedulesContext.Schedulings.Find(id);
+            var fromAddress = new MailAddress("doesangue.doe@gmail.com", "Doe Sangue");
+            var toAddress = new MailAddress(schedule.email, schedule.name);
+            string fromPassword = "doesangu3";
+            string subject = "Confirmação de agendamento";
+            string body = @$"Olá {schedule.name}, seu agendamento foi 
+realizado com sucesso. <br> Data:<strong>{schedule.date.ToString()}</strong> <br> Atenciosamente, Hemocentro {schedule.bloodCenter.name_bc}";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                //DeliveryMethod = SmtpDeliveryMethod.Network,
+                //UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+            {
+                smtp.Send(message);
+            }
+
+            return RedirectToAction("Management");
+
+        }
+
 
         [HttpGet]
         public IActionResult Management()
