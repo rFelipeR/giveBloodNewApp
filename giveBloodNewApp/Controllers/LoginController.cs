@@ -36,7 +36,7 @@ namespace Ecommerce.Controllers
             string fromPassword = "doesangu3";
             string subject = "Confirmação de agendamento";
             string body = @$"Olá {schedule.name}, seu agendamento foi 
-realizado com sucesso. <br> Data:<strong>{schedule.date.ToString()}</strong> <br> Atenciosamente, Hemocentro {schedule.bloodCenter.name_bc}";
+realizado com sucesso. <br> Data: <strong>{schedule.date.ToString()}</strong> <br> Atenciosamente, {schedule.bloodCenter.name_bc}";
 
             var smtp = new SmtpClient
             {
@@ -67,14 +67,18 @@ realizado com sucesso. <br> Data:<strong>{schedule.date.ToString()}</strong> <br
         [HttpGet]
         public IActionResult Management()
         {
-                SchedulesContext schedulesContext = new SchedulesContext();   
-                var scheduleList = schedulesContext.Schedulings.OrderByDescending(x => x.date).Where(x => true);
-                //var bloodCenterList = schedulesContext.BloodCenters.OrderByDescending(x => x.id_bc).Where(x => true);
-                ViewBag.Schedulings = schedulesContext.Schedulings.OrderBy(x => x.id).ToList();
-                return View(scheduleList.ToList());
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Index", "Schedule");
+            }
+            SchedulesContext schedulesContext = new SchedulesContext();
+            var scheduleList = schedulesContext.Schedulings.OrderByDescending(x => x.date).Where(x => true);
+            //var bloodCenterList = schedulesContext.BloodCenters.OrderByDescending(x => x.id_bc).Where(x => true);
+            ViewBag.Schedulings = schedulesContext.Schedulings.OrderBy(x => x.id).ToList();
+            return View(scheduleList.ToList());
         }
 
-            [HttpPost]
+        [HttpPost]
         public IActionResult Index(Employee employee)
         {
             DAL.SchedulesContext appContext = new DAL.SchedulesContext();
@@ -106,7 +110,7 @@ realizado com sucesso. <br> Data:<strong>{schedule.date.ToString()}</strong> <br
         [HttpPost]
         public IActionResult Create(Employee employee /*IFormFile postedFile*/)
         {
-          
+
             DAL.SchedulesContext appContext = new DAL.SchedulesContext();
             employee.Salt = Guid.NewGuid().ToString();
             employee.Hash = Util.Cryptography.CreateMD5(employee.Hash + employee.Salt);

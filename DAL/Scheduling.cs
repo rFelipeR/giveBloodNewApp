@@ -23,5 +23,6 @@ namespace DAL
         public string name { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
+        public bool? answered { get; set; }
     }
 }
