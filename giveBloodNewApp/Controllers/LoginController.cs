@@ -74,7 +74,7 @@ realizado com sucesso. <br> Data: <strong>{schedule.date.ToString()}</strong> <b
             SchedulesContext schedulesContext = new SchedulesContext();
             var scheduleList = schedulesContext.Schedulings.OrderByDescending(x => x.date).Where(x => true);
             //var bloodCenterList = schedulesContext.BloodCenters.OrderByDescending(x => x.id_bc).Where(x => true);
-            ViewBag.Schedulings = schedulesContext.Schedulings.OrderBy(x => x.id).ToList();
+            ViewBag.Schedulings = schedulesContext.Schedulings.OrderBy(x => x.date).ToList();
             return View(scheduleList.ToList());
         }
 
